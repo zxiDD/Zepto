@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Searchbar, Card } from "react-native-paper";
 
@@ -34,20 +34,25 @@ const Home = () => {
           inputStyle={{ alignContent: "center" }}
         />
       </View>
-      <View style={styles.container}>
-        <View style={{ flexDirection: "row", justifyContent: "center" }}>
-          <Text style={{ fontSize: 15 }}>Trending Near </Text>
-          <Text style={{ fontSize: 15, color: "#982ECC" }}>You</Text>
-        </View>
-        <FlatList
-          data={foodItems}
-          renderItem={(item) => (
-            <FoodItemCard title={item.title} imageUrl={item.imageUrl} />
-          )}
-          numColumns={3}
-          keyExtractor={item => item.id}
+      <ScrollView style={styles.container}>
+        <Image
+          source={{
+            uri: "https://static.toiimg.com/thumb/msid-108112736,width-1070,height-580,imgsize-24554,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg",
+          }}
+          style={{ height: 150, width: "auto", resizeMode: "contain" }}
         />
-      </View>
+        <View style={{ alignItems: "center", }}>
+          <FlatList
+            data={foodItems}
+            renderItem={({ item }) => (
+              <FoodItemCard title={item.title} imageUrl={item.imageUrl} />
+            )}
+            numColumns={3}
+            keyExtractor={(item) => item.id}
+            ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
+          />
+        </View>
+      </ScrollView>
     </>
   );
 };

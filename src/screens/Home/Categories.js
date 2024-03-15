@@ -3,8 +3,8 @@ import { View, Text } from 'react-native';
 
 const Categories = () => {
     return(
-        <View>
-            <Text>Categories</Text>
+        <View style={{flex:1, justifyContent:'center', alignItems: 'center',}}>
+            <Text>Coming soon...</Text>
         </View>
     )
 }
